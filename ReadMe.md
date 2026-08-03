@@ -65,7 +65,7 @@ Ces trois scripts peuvent aussi être lancés indépendamment en ligne de comman
 ## Lancement
 Application principale :
 ```bash
-python3 pilotage_cameras_PI5_v6.py
+python3 pilotage_cameras_Pi5.py
 ```
 
 Démos IMX500 en ligne de commande (exemple) :
@@ -91,7 +91,7 @@ pip install opencv-python numpy pillow --break-system-packages
 ## Structure du dépôt
 ```
 Pilotage_Cameras_Sony/
-├── pilotage_cameras_PI5_v6.py            # Application principale (Tkinter, tous les onglets)
+├── pilotage_cameras_Pi5.py            # Application principale (Tkinter, tous les onglets)
 ├── imx500_object_detection_demo.py       # Démo IMX500 — détection d'objets
 ├── imx500_classification_demo.py         # Démo IMX500 — classification
 ├── imx500_segmentation_demo.py           # Démo IMX500 — segmentation
