@@ -735,6 +735,7 @@ class TimelapseController:
                 "--height", str(height),
                 "--camera", cam_index,
                 "-n",
+                "--timeout", "200",
             ]
             if hdr and camera == "IMX708":
                 cmd += ["--hdr"]
@@ -751,7 +752,9 @@ class TimelapseController:
                 log_cb(f"Capture {frame_index + 1} : "
                        f"{os.path.basename(filename)}")
 
+            t0_capture = time.time()
             subprocess.run(cmd, capture_output=True)
+            duree_capture = time.time() - t0_capture
 
             # Watchdog : vérifie que le fichier a bien été écrit
             ok = os.path.exists(filename) and os.path.getsize(filename) > 1000
@@ -779,7 +782,8 @@ class TimelapseController:
                     "frame_index": frame_index,
                 })
 
-            for _ in range(interval_s):
+            attente = max(0, interval_s - duree_capture)
+            for _ in range(int(attente)):
                 if self._stop_event.wait(timeout=1):
                     break
 
@@ -3188,7 +3192,9 @@ class CameraGUI:
             w        = self.tl_width.get()
             h        = self.tl_height.get()
 
-            nb_frames  = (duration * 60) // interval
+            # +1 car la 1ère photo est prise immédiatement à t=0,
+            # puis une photo toutes les "interval" secondes
+            nb_frames  = (duration * 60) // interval + 1
             duree_vid  = nb_frames / fps
 
             self.tl_label_info.config(
