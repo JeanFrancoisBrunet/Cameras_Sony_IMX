@@ -91,7 +91,7 @@ pip install opencv-python numpy pillow --break-system-packages
 ## Structure du dépôt
 ```
 Pilotage_Cameras_Sony/
-├── pilotage_cameras_Pi5.py            # Application principale (Tkinter, tous les onglets)
+├── pilotage_cameras_Pi5.py               # Application principale (Tkinter, tous les onglets)
 ├── imx500_object_detection_demo.py       # Démo IMX500 — détection d'objets
 ├── imx500_classification_demo.py         # Démo IMX500 — classification
 ├── imx500_segmentation_demo.py           # Démo IMX500 — segmentation
