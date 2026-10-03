@@ -1,12 +1,13 @@
 __pycache__/
 *.pyc
- 
-*.log
+ *.log
 *.lock
- 
-.msal_token_cache.json
+ .msal_token_cache.json
 .secrets.env
 .env
 *.env
  .groq_config
 history.json.lock
+*.zip
+*.pt
+*.onnx
